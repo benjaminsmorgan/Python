@@ -1,3 +1,8 @@
+<<<<<<< Updated upstream
 mkdir hello
 cd hello
+=======
+mkdir hello
+cd hello
+>>>>>>> Stashed changes
 code .
