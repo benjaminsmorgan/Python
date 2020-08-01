@@ -1,3 +1,8 @@
+tspdict = {"tbsp" : .3334, "cup" : .0208333, "pint" : .01041666, "quart" : 0.0052083333} 
+tbspdict = {"tsp" : 3, "cup" : .0625, "pint" : .03125, "quart" : .015625}
+cupdict = {"tsp" : 48, "tbsp" : 16, "pint" : .5, "quart" : .25}
+pintdict = {"tsp" : 96, "tbsp" : 32, "cup" : 2, "quart" : .5}
+quartdict = {"tsp" : 192, "tbsp" : 64, "cup" : 4, "pint" : 2}
 def option1(): #main menu
     print("Welcome to my conversion calculator!")
     print("Select from the following options")
@@ -12,9 +17,9 @@ def option1(): #main menu
     elif o1val == "2":
         discalc()
     elif o1val == "3":
-        option1_3()
+        volcalc()
     elif o1val == "Exit":
-        import sys
+        import sysexit
         sys.exit()
     elif o1val =="exit":
         import sys
@@ -63,9 +68,160 @@ def discalc():
     else:
         print("Please select a valid option")
         discalc()
-def option1_3():
-    print("option3 filler")
-    option1()
+def volcalc():
+    print("")
+    vol_1 = float(input("Enter starting volume:"))
+    print("")
+    print("1. Teaspoon")
+    print("2. Tablespoon")
+    print("3. Cup")
+    print("4. Pint")
+    print("5. Quart")
+    #print("6. Gallons")
+    #print("7. Pounds")
+    print("10. Exit")
+    vol_2 = input("Select the starting unit:")
+    vol_3 = input("Select the end unit: ")
+    if vol_2 == vol_3:
+        print("Thats the same unit...")
+        volcalc()
+    elif vol_2 == "1":
+        volcalctsp(vol_1, vol_2, vol_3)
+    elif vol_2 == "2":
+        volcalctbsp(vol_1, vol_2, vol_3)
+    elif vol_2 == "3":
+        volcalccup(vol_1, vol_2, vol_3)
+    elif vol_2 == "4":
+        volcalcpint(vol_1, vol_2, vol_3)
+    elif vol_2 == "5":
+        volcalcquart(vol_1, vol_2, vol_3)
+    #elif vol_2 == "6":
+        #volcalcgal(vol_1, vol_2, vol_3)
+    #elif vol_2 == "7":
+        #volcalclbs(vol_1, vol_2, vol_3)
+    elif vol_2 == "exit":
+        option1()
+def volcalctsp(vol_1, vol_2, vol_3): #TSP to ALL
+    if vol_3 == "2": #tablespoons
+        x = tspdict.get("tbsp")
+        y = (x * vol_1)
+        print("%d Teaspoons is equal to %.2f Tablespoons" % (vol_1, y))
+        volcalc()
+    elif vol_3 == "3": #cups
+        x = tspdict.get("cup")
+        y = (x * vol_1)
+        print("%d Teaspoons is equal to %.2f Cups" % (vol_1, y)) 
+        volcalc()   
+    elif vol_3 == "4": #pints
+        x = tspdict.get("pint")
+        y = (x * vol_1)
+        print("%d Teaspoons is equal to %.2f pints" % (vol_1, y)) 
+        volcalc()
+    elif vol_3 == "5": #pints
+        x = tspdict.get("quart")
+        y = (x * vol_1)
+        print("%d Teaspoons is equal to %.2f quarts" % (vol_1, y)) 
+        volcalc() 
+    else:
+        print("A valid option was not selected")
+        volcalc()            
+def volcalctbsp(vol_1, vol_2, vol_3): #TBSP to ALL
+    if vol_3 == "1": #teasspoon
+        x = tbspdict.get("tsp")
+        y = (x * vol_1)
+        print("%d Tablespoons is equal to %.2f Teaspoons" % (vol_1, y))
+        volcalc()
+    elif vol_3 == "3": #cups
+        x = tbspdict.get("cup")
+        y = (x * vol_1)
+        print("%d Tablespoons is equal to %.2f Cups" % (vol_1, y)) 
+        volcalc()   
+    elif vol_3 == "4": #pints
+        x = tbspdict.get("pint")
+        y = (x * vol_1)
+        print("%d Tablespoons is equal to %.2f pints" % (vol_1, y)) 
+        volcalc()
+    elif vol_3 == "5": #pints
+        x = tbspdict.get("quart")
+        y = (x * vol_1)
+        print("%d Tablespoons is equal to %.2f quarts" % (vol_1, y)) 
+        volcalc() 
+    else:
+        print("A valid option was not selected")
+        volcalc()        
+def volcalccup(vol_1, vol_2, vol_3): #cup to ALL
+    if vol_3 == "1": #teasspoon
+        x = cupdict.get("tsp")
+        y = (x * vol_1)
+        print("%d Cups is equal to %.2f Teaspoons" % (vol_1, y))
+        volcalc()
+    elif vol_3 == "2": #tablespoons
+        x = cupdict.get("tbsp")
+        y = (x * vol_1)
+        print("%d Cups is equal to %.2f Tablespoons" % (vol_1, y)) 
+        volcalc()   
+    elif vol_3 == "4": #pints
+        x = cupdict.get("pint")
+        y = (x * vol_1)
+        print("%d Cups is equal to %.2f pints" % (vol_1, y)) 
+        volcalc()
+    elif vol_3 == "5": #quarts
+        x = cupdict.get("quart")
+        y = (x * vol_1)
+        print("%d Cups is equal to %.2f quarts" % (vol_1, y)) 
+        volcalc() 
+    else:
+        print("A valid option was not selected")
+        volcalc()                 
+def volcalcpint(vol_1, vol_2, vol_3): #pint to ALL
+    if vol_3 == "1": #teasspoon
+        x = pintdict.get("tsp")
+        y = (x * vol_1)
+        print("%d Pints is equal to %.2f Teaspoons" % (vol_1, y))
+        volcalc()
+    elif vol_3 == "2": #cupstablespoons
+        x = pintdict.get("tbsp")
+        y = (x * vol_1)
+        print("%d Pints is equal to %.2f Tablespoons" % (vol_1, y)) 
+        volcalc()   
+    elif vol_3 == "3": #cups
+        x = pintdict.get("cup")
+        y = (x * vol_1)
+        print("%d Pints is equal to %.2f Cups" % (vol_1, y)) 
+        volcalc()
+    elif vol_3 == "5": #quarts
+        x = pintdict.get("quart")
+        y = (x * vol_1)
+        print("%d Pints is equal to %.2f quarts" % (vol_1, y)) 
+        volcalc() 
+    else:
+        print("A valid option was not selected")
+        volcalc()             
+def volcalcquart(vol_1, vol_2, vol_3): #quart to ALL
+    if vol_3 == "1": #teasspoon
+        x = quartdict.get("tsp")
+        y = (x * vol_1)
+        print("%d Quarts is equal to %.2f Teaspoons" % (vol_1, y))
+        volcalc()
+    elif vol_3 == "2": #cupstablespoons
+        x = quartdict.get("tbsp")
+        y = (x * vol_1)
+        print("%d Quarts is equal to %.2f Tablespoons" % (vol_1, y)) 
+        volcalc()   
+    elif vol_3 == "3": #cups
+        x = quartdict.get("cup")
+        y = (x * vol_1)
+        print("%d Quarts is equal to %.2f Cups" % (vol_1, y)) 
+        volcalc()
+    elif vol_3 == "4": #quarts
+        print(quartdict.get("pint")*vol_1)
+        volcalc() 
+    else:
+        print("A valid option was not selected")
+        volcalc()                    
+def volcalcexit():
+    print(">>>>>>>>Leaving Volume Conversion<<<<<<<<")
+    option1()    
 def tempcalcf():
     while True: #error handling for strings
         try:
