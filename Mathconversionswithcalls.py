@@ -19,7 +19,7 @@ def option1(): #main menu
     elif o1val == "3":
         volcalc()
     elif o1val == "Exit":
-        import sysexit
+        import sys
         sys.exit()
     elif o1val =="exit":
         import sys
